@@ -20,8 +20,25 @@ button.on("click", function(){
     var userDate = d3.select("#datetime");
     var dateValue = userDate.property("value");
 
+    var userCity = d3.select("#city");
+    var cityValue = userCity.property("value");
+    cityValue = cityValue.toLowerCase();
+
+    var userState = d3.select("#state");
+    var stateValue = userState.property("value");
+    stateValue = stateValue.toLowerCase();
+
+    var userCountry = d3.select("#country");
+    var countryValue = userCountry.property("value");
+    countryValue = countryValue.toLowerCase();
+
+    var userShape = d3.select("#shape");
+    var shapeValue = userShape.property("value");
+    shapeValue = shapeValue.toLowerCase();
+
     // filter by user input and display what they select
-    var filteredResults = tableData.filter(options=>options.datetime===dateValue);
+    var filteredResults = tableData.filter(options=>options.datetime===dateValue || options.city===cityValue || options.state===stateValue ||
+        options.country===countryValue || options.shape===shapeValue);
         rows = filteredResults.length;
         if (rows>=1){
             d3.select("tbody").remove();

@@ -39,9 +39,26 @@
                         <label for="date">Enter a Date</label>
                         <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
                       </li>
+                      <li class="filter list-group-item">
+                        <label for="city">Enter City</label>
+                        <input class="form-control" id="city" type="text" placeholder="benton">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for ="state">Enter State</label>
+                        <input class="form-control" id ="state" type="text" placeholder="ar">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="country">Enter Country</label>
+                        <input class="form-control" id="country" type="text" placeholder="us">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="country">Enter Shape</label>
+                        <input class="form-control" id="shape" type="text" placeholder="circle">
+                      </li>
                     </ul>
                   </div>
                   <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                  <input type="reset" value="Reset">
                 </form>
               </div>
             </div>
@@ -63,10 +80,12 @@
               </thead>
               <tbody></tbody>
             </table>
+            <h1 class="output"></h1>
           </div>
         </div>
       </div>
     </div>
+    
     <footer class="footer">
       <span class="bottom">UFO Sightings</span>
     </footer>
