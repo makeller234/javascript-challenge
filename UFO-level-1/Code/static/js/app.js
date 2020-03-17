@@ -1,8 +1,6 @@
 // from data.js
 var tableData = data;
 
-
-
 var tbody = d3.select("tbody");
 
 // add row, then table data to table, and then add data from dataset into table.
@@ -18,54 +16,48 @@ var button = d3.select("button");
 
 button.on("click", function(){
 
-
     //read in user input
-    var userDate = d3.select(".form-control");
+    var userDate = d3.select("#datetime");
     var dateValue = userDate.property("value");
 
-    //test user date is recording right
-    // console.log(dateValue);
+    var userCity = d3.select("#city");
+    var cityValue = userCity.property("value");
+    cityValue = cityValue.toLowerCase();
 
-    // filter table by the date the user input
-    var dateFilter = tableData.filter(date =>date.datetime===dateValue);
+    var userState = d3.select("#state");
+    var stateValue = userState.property("value");
+    stateValue = stateValue.toLowerCase();
 
-    // test that filter is correct
-    // console.log(dateFilter);
+    var userCountry = d3.select("#country");
+    var countryValue = userCountry.property("value");
+    countryValue = countryValue.toLowerCase();
 
-    // // first attempt to add filters row, doesn't work, just adds them to bottom of existing table
-    // dateFilter.forEach(function(date){
-    //     var row = tbody.append("tr");
-    //     Object.entries(date).forEach(function([key,value]){
-    //         var cell = row.append("td");
-    //         cell.text(value);
-    //     });
-    // });
+    var userShape = d3.select("#shape");
+    var shapeValue = userShape.property("value");
+    shapeValue = shapeValue.toLowerCase();
 
+    // filter by user input and display what they select
+    var filteredResults = tableData.filter(options=>options.datetime===dateValue || options.city===cityValue || options.state===stateValue ||
+        options.country===countryValue || options.shape===shapeValue);
+        rows = filteredResults.length;
+        if (rows>=1){
+            d3.select("tbody").remove();
+            var add = d3.select("table");
+            var tbody2 = add.append("tbody");
 
-    // // second attempt to filter row, by hiding ones that don't match the values
-    // var rows = tableData.length;
-    //  for (var i = 0; i < rows; i++){
-
-    //      if (tableData[i].datetime != dateValue){
-    //         hideValue = tableData[i];
-    //         hideValue.style.display = "none";
-    //      }
-    //  }
-
-    // //third attempt: remove previous table and put in a new one. Only works for one call, because table is removed
-    d3.select("tbody").remove();
-    var add = d3.select("table");
-    var tbody2 = add.append("tbody")
-
-    dateFilter.forEach(function(date){
-        var row = tbody2.append("tr");
-        Object.entries(date).forEach(function([key,value]){
-            var cell = row.append("td");
-            cell.text(value);
-        });
-    });
-
-
+            filteredResults.forEach(function(date){
+                var row = tbody2.append("tr");
+                Object.entries(date).forEach(function([key,value]){
+                    var cell = row.append("td");
+                    cell.text(value);
+                });
+            });
+        }
+        else {
+            d3.select("tbody").remove();
+            var output = d3.select(".output");
+            output.text("Nothing found that meets your results. Keep searching....the truth is out there.");
+        }
 
 
 });
