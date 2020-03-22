@@ -10,9 +10,10 @@ tableData.forEach(function(UFOs){
         var cell = row.append("td");
         cell.text(value);
     });
+    
 });
-
 var button = d3.select("button");
+
 
 button.on("click", function(){
 
@@ -22,25 +23,40 @@ button.on("click", function(){
 
     // filter by user input and display what they select
     var filteredResults = tableData.filter(options=>options.datetime===dateValue);
-        rows = filteredResults.length;
-        if (rows>=1){
-            d3.select("tbody").remove();
-            var add = d3.select("table");
-            var tbody2 = add.append("tbody");
 
-            filteredResults.forEach(function(date){
-                var row = tbody2.append("tr");
-                Object.entries(date).forEach(function([key,value]){
-                    var cell = row.append("td");
-                    cell.text(value);
-                });
+    
+    var rows = filteredResults.length
+    if (rows>=1){
+
+        d3.select("tbody").remove();
+        var add = d3.select("table");
+        var tbody2 = add.append("tbody");
+
+        filteredResults.forEach(function(date){
+            var row = tbody2.append("tr");
+            Object.entries(date).forEach(function([key,value]){
+                var cell = row.append("td");
+                cell.text(value);
             });
-        }
-        else {
-            d3.select("tbody").remove();
-            var output = d3.select(".output");
-            output.text("Nothing found that meets your results. Keep searching....the truth is out there.");
-        }
+        });
+        // assign the output message and "hide" it.  Needs to happen here otherwise after the else statement is met, 
+        // it won't go away even if a new search is entered.
+        var output = d3.select(".output");
+        output.html("");
+        
+    }
+    else {
+        
+        d3.select("tbody").remove();
+        var output = d3.select(".output");
+        output.text("Nothing found that meets your results. Keep searching...the truth is out there.");
+    }
+
+    // clear the search input value
+    d3.select("#datetime").node().value = "";
+
 
 });
+
+
 

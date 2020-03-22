@@ -37,8 +37,11 @@ button.on("click", function(){
     shapeValue = shapeValue.toLowerCase();
 
     // filter by user input and display what they select
-    var filteredResults = tableData.filter(options=>options.datetime===dateValue || options.city===cityValue || options.state===stateValue ||
-        options.country===countryValue || options.shape===shapeValue);
+    var filteredResults = tableData.filter(options=>options.datetime===dateValue || 
+        options.city===cityValue ||
+        options.state===stateValue ||
+        options.country===countryValue ||
+        options.shape===shapeValue);
         rows = filteredResults.length;
         if (rows>=1){
             d3.select("tbody").remove();
@@ -52,12 +55,22 @@ button.on("click", function(){
                     cell.text(value);
                 });
             });
+        // assign the output message and "hide" it.  Needs to happen here otherwise after the else statement is met, 
+        // it won't go away even if a new search is entered.
+        var output = d3.select(".output");
+        output.html("");
         }
         else {
             d3.select("tbody").remove();
             var output = d3.select(".output");
-            output.text("Nothing found that meets your results. Keep searching....the truth is out there.");
+            output.text("Nothing found that meets your results. Keep searching...the truth is out there.");
         }
+    // clear the search input values
+    d3.select("#datetime").node().value = "";
+    d3.select("#city").node().value = "";
+    d3.select("#state").node().value = "";
+    d3.select("#country").node().value = "";
+    d3.select("#shape").node().value = "";
 
 });
 
