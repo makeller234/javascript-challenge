@@ -90,6 +90,19 @@ h1{
   background-color: #403F5D;
 }
 
+#ufo{
+  top:8%;
+  position:absolute;
+  z-index: 90000;
+  -webkit-animation:linear infinite alternate;
+  -webkit-animation-name: run;
+  -webkit-animation-duration: 15s;
+}
+@-webkit-keyframes run {
+  0% { left: 0;}
+  50%{ left : 100%;}
+  100%{ left: 0;}
+}
 
 select {
   display: block;
