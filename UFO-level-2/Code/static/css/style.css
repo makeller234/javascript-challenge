@@ -51,7 +51,7 @@ h1{
 }
 
 .footer .nav-ufo{
-  bottom: 0;
+  bottom: -2px;
   left: 115px;
   width: 35px;
   color: white;
