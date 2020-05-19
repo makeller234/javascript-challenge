@@ -26,6 +26,8 @@ button.on("click", function(){
 
     
     var rows = filteredResults.length
+
+    // condition to check if there are results to display or if it should display the else statement
     if (rows>=1){
 
         d3.select("tbody").remove();
