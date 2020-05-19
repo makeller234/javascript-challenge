@@ -49,7 +49,7 @@ button.on("click", function(){
         
         d3.select("tbody").remove();
         var output = d3.select(".output");
-        output.text("Nothing found that meets your results. Keep searching...the truth is out there.");
+        output.text("Nothing found that matches your criteria. Keep searching...the truth is out there.");
     }
 
     // clear the search input value
