@@ -12,8 +12,9 @@ tableData.forEach(function(UFOs){
     });
     
 });
-var button = d3.select("button");
 
+// Filter Table button
+var button = d3.select("button");
 
 button.on("click", function(){
 
@@ -57,8 +58,7 @@ button.on("click", function(){
     // clear the search input value
     d3.select("#datetime").node().value = "";
 
-
 });
-
+//end of filter table button function
 
 
