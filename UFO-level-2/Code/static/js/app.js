@@ -43,6 +43,8 @@ button.on("click", function(){
         options.state===stateValue ||
         options.country===countryValue ||
         options.shape===shapeValue);
+
+        // condition to check if there are any returned results
         rows = filteredResults.length;
         if (rows>=1){
             d3.select("tbody").remove();
@@ -61,6 +63,7 @@ button.on("click", function(){
         var output = d3.select(".output");
         output.html("");
         }
+        
         else {
             d3.select("tbody").remove();
             var output = d3.select(".output");
