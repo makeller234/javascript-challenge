@@ -12,6 +12,7 @@ tableData.forEach(function(UFOs){
     });
 });
 
+// Start of Filter Table button code
 var button = d3.select("button");
 
 button.on("click", function(){
@@ -65,6 +66,7 @@ button.on("click", function(){
             var output = d3.select(".output");
             output.text("Nothing found that matches your criteria. Keep searching...the truth is out there.");
         }
+
     // clear the search input values
     d3.select("#datetime").node().value = "";
     d3.select("#city").node().value = "";
@@ -73,4 +75,5 @@ button.on("click", function(){
     d3.select("#shape").node().value = "";
 
 });
+// end of Filter Table button function
 
